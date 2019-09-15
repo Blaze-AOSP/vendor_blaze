@@ -32,13 +32,3 @@ else
     PRODUCT_PACKAGES += \
         Launcher3QuickStep
 endif
-
-# Google Fonts
-PRODUCT_COPY_FILES += \
-    vendor/blaze/fonts/GoogleSans-Regular.ttf:system/fonts/GoogleSans-Regular.ttf \
-    vendor/blaze/fonts/GoogleSans-Medium.ttf:system/fonts/GoogleSans-Medium.ttf \
-    vendor/blaze/fonts/GoogleSans-MediumItalic.ttf:system/fonts/GoogleSans-MediumItalic.ttf \
-    vendor/blaze/fonts/GoogleSans-Italic.ttf:system/fonts/GoogleSans-Italic.ttf \
-    vendor/blaze/fonts/GoogleSans-Bold.ttf:system/fonts/GoogleSans-Bold.ttf \
-    vendor/blaze/fonts/GoogleSans-BoldItalic.ttf:system/fonts/GoogleSans-BoldItalic.ttf
-ADDITIONAL_FONTS_FILE := vendor/blaze/fonts/google-sans.xml

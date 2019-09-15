@@ -17,5 +17,8 @@ PRODUCT_COPY_FILES += \
 include vendor/blaze/config/branding.mk
 include vendor/blaze/config/packages.mk
 
+# GoogleSans font
+include vendor/blaze/config/fonts.mk
+
 # Call special ringtones makefile
 include vendor/blaze/config/common_audio.mk
