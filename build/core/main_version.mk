@@ -1,10 +1,10 @@
-# Bootleggers System Version
+# blaze System Version
 ADDITIONAL_BUILD_PROPERTIES += \
-    ro.bootleggers.version_number=$(BOOTLEGGERS_VERSION_NUMBER) \
-    ro.bootleggers.releasetype=$(BOOTLEGGERS_BUILD_TYPE) \
-    ro.bootleggers.version=$(BOOTLEGGERS_VERSION) \
-    ro.bootleggers.buildshort=$(BOOTLEGGERS_MOD_SHORT) \
-    ro.bootleggers.songcodename=$(PRODUCT_VERSION_MINOR) \
-    ro.bootleggers.songcodeurl=$(BOOTLEGGERS_SONGCODEURL) \
-    ro.bootleggers.display.version=$(BOOTLEGGERS_VERSION) \
-    ro.bootleggers.build.date=$(BOOTLEGGERS_EPOCH)
+    ro.blaze.version_number=$(BLAZE_VERSION_NUMBER) \
+    ro.blaze.releasetype=$(BLAZE_BUILD_TYPE) \
+    ro.blaze.version=$(BLAZE_VERSION) \
+    ro.blaze.buildshort=$(BLAZE_MOD_SHORT) \
+    ro.blaze.songcodename=$(PRODUCT_VERSION_MINOR) \
+    ro.blaze.songcodeurl=$(BLAZE_SONGCODEURL) \
+    ro.blaze.display.version=$(BLAZE_VERSION) \
+    ro.blaze.build.date=$(BLAZE_EPOCH)

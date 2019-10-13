@@ -11,23 +11,23 @@ PRODUCT_PACKAGES += \
     Recorder \
     ThemePicker
 
-ifeq ($(BOOTLEGGERS_BUILD_TYPE),Shishufied)
+ifeq ($(BLAZE_BUILD_TYPE),Ignited)
     PRODUCT_PACKAGES += \
-        ShishuOTA
+        IgniteOTA
 endif
 
 # Launcher Selection just in case
 # Please, prepare for reports
-ifeq ($(BOOTLEGGERS_SITDOWN),true)
+ifeq ($(BLAZE_SITDOWN),true)
     PRODUCT_PACKAGES += \
         Lawnchair
 
 PRODUCT_COPY_FILES += \
-    vendor/bootleggers/prebuilt/lawnchair/etc/permissions/privapp-permissions-lawnchair.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-lawnchair.xml \
-    vendor/bootleggers/prebuilt/lawnchair/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml
+    vendor/blaze/prebuilt/lawnchair/etc/permissions/privapp-permissions-lawnchair.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-lawnchair.xml \
+    vendor/blaze/prebuilt/lawnchair/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/lawnchair-hiddenapi-package-whitelist.xml
 
     DEVICE_PACKAGE_OVERLAYS += \
-        vendor/bootleggers/overlay/lawnchair
+        vendor/blaze/overlay/lawnchair
 else
     PRODUCT_PACKAGES += \
         Launcher3QuickStep
@@ -43,7 +43,7 @@ endif
 #    StatusBarStock
 
 # Call the overlays folder to build all the rest 
-#include packages/overlays/Shishufied/shishu.mk
+#include packages/overlays/Ignited/ignite.mk
 
 ### COMMENTED WASTELAND - MOVED TEMPORALLY HERE DUE TO WIP ###
 #

@@ -1,5 +1,5 @@
 # Include board/platform macros
-include vendor/bootleggers/build/core/utils.mk
+include vendor/blaze/build/core/utils.mk
 
 # Include vendor platform definitions
-include vendor/bootleggers/build/core/vendor/*.mk
+include vendor/blaze/build/core/vendor/*.mk

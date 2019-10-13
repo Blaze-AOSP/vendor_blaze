@@ -29,37 +29,37 @@ endif
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
-    vendor/bootleggers/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
-    vendor/bootleggers/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/bootleggers/prebuilt/common/bin/50-bootleggers.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-bootleggers.sh \
-    vendor/bootleggers/prebuilt/common/bin/blacklist:$(TARGET_COPY_OUT_SYSTEM)/addon.d/blacklist
+    vendor/blaze/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
+    vendor/blaze/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
+    vendor/blaze/prebuilt/common/bin/50-blaze.sh:$(TARGET_COPY_OUT_SYSTEM)/addon.d/50-blaze.sh \
+    vendor/blaze/prebuilt/common/bin/blacklist:$(TARGET_COPY_OUT_SYSTEM)/addon.d/blacklist
 
 ifeq ($(AB_OTA_UPDATER),true)
 PRODUCT_COPY_FILES += \
-    vendor/bootleggers/prebuilt/common/bin/backuptool_ab.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.sh \
-    vendor/bootleggers/prebuilt/common/bin/backuptool_ab.functions:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.functions \
-    vendor/bootleggers/prebuilt/common/bin/backuptool_postinstall.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_postinstall.sh
+    vendor/blaze/prebuilt/common/bin/backuptool_ab.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.sh \
+    vendor/blaze/prebuilt/common/bin/backuptool_ab.functions:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_ab.functions \
+    vendor/blaze/prebuilt/common/bin/backuptool_postinstall.sh:$(TARGET_COPY_OUT_SYSTEM)/bin/backuptool_postinstall.sh
 endif
 
 # priv-app whitelist
 PRODUCT_COPY_FILES += \
-    vendor/bootleggers/prebuilt/common/etc/permissions/privapp-permissions-bootleg.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-bootleg.xml
+    vendor/blaze/prebuilt/common/etc/permissions/privapp-permissions-blaze.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-blaze.xml
 
 # Backup Services whitelist
 PRODUCT_COPY_FILES += \
-    vendor/bootleggers/config/permissions/backup.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/backup.xml
+    vendor/blaze/config/permissions/backup.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/backup.xml
 
 # init.d support
 PRODUCT_COPY_FILES += \
-    vendor/bootleggers/prebuilt/common/bin/sysinit:$(TARGET_COPY_OUT_SYSTEM)/bin/sysinit
+    vendor/blaze/prebuilt/common/bin/sysinit:$(TARGET_COPY_OUT_SYSTEM)/bin/sysinit
 
-# Copy all Bootleggers-specific init rc files
-$(foreach f,$(wildcard vendor/bootleggers/prebuilt/common/etc/init/*.rc),\
+# Copy all blaze-specific init rc files
+$(foreach f,$(wildcard vendor/blaze/prebuilt/common/etc/init/*.rc),\
 	$(eval PRODUCT_COPY_FILES += $(f):$(TARGET_COPY_OUT_SYSTEM)/etc/init/$(notdir $f)))
 
 # Copy over added mimetype supported in libcore.net.MimeUtils
 PRODUCT_COPY_FILES += \
-    vendor/bootleggers/prebuilt/common/lib/content-types.properties:$(TARGET_COPY_OUT_SYSTEM)/lib/content-types.properties
+    vendor/blaze/prebuilt/common/lib/content-types.properties:$(TARGET_COPY_OUT_SYSTEM)/lib/content-types.properties
 
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
@@ -71,17 +71,17 @@ PRODUCT_COPY_FILES += \
 
 # Livedisplay
 PRODUCT_COPY_FILES += \
-    vendor/bootleggers/config/permissions/privapp-permissions-custom.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-custom.xml
+    vendor/blaze/config/permissions/privapp-permissions-custom.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-custom.xml
 
 # Some permissions
 PRODUCT_COPY_FILES += \
-    vendor/bootleggers/config/permissions/privapp-permissions-recorder.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-recorder.xml \
-    vendor/bootleggers/config/permissions/org.pixelexperience.recorder.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/org.pixelexperience.recorder.xml \
-    vendor/bootleggers/config/permissions/bootleggers-hiddenapi-package-whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/bootleggers-hiddenapi-package-whitelist.xml
+    vendor/blaze/config/permissions/privapp-permissions-recorder.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-recorder.xml \
+    vendor/blaze/config/permissions/org.pixelexperience.recorder.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/org.pixelexperience.recorder.xml \
+    vendor/blaze/config/permissions/blaze-hiddenapi-package-whitelist.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/blaze-hiddenapi-package-whitelist.xml
 
 # TWRP
 ifeq ($(WITH_TWRP),true)
-include vendor/bootleggers/config/twrp.mk
+include vendor/blaze/config/twrp.mk
 endif
 
 # Disable vendor restrictions
@@ -92,7 +92,7 @@ PRODUCT_PACKAGES += \
     libprotobuf-cpp-full \
     librsjni
 
-# Extra tools in Bootleggers
+# Extra tools in blaze
 PRODUCT_PACKAGES += \
     7z \
     awk \
@@ -175,17 +175,17 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.com.google.ime.height_ratio=1.05 \
     ro.com.google.ime.emoji_key=false
 
-DEVICE_PACKAGE_OVERLAYS += vendor/bootleggers/overlay/common
+DEVICE_PACKAGE_OVERLAYS += vendor/blaze/overlay/common
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
--include vendor/bootleggers/config/partner_gms.mk
+-include vendor/blaze/config/partner_gms.mk
 
 ifeq ($(TARGET_PROVIDES_TELEPHONY_EXT),)
 ifeq ($(TARGET_REQUIRES_TELEPHONY_EXT),true)
-include vendor/bootleggers/config/caf_fw.mk
+include vendor/blaze/config/caf_fw.mk
 endif
 endif
 
-include vendor/bootleggers/config/btlg_main.mk
+include vendor/blaze/config/blz_main.mk
 
 $(call prepend-product-if-exists, vendor/extra/product.mk)

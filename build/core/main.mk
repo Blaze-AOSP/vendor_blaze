@@ -1,2 +1,2 @@
-# Include Bootleggers versions
-include $(TOPDIR)vendor/bootleggers/build/core/main_version.mk
+# Include blaze versions
+include $(TOPDIR)vendor/blaze/build/core/main_version.mk

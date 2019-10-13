@@ -14,42 +14,40 @@
 # limitations under the License.
 
 # -----------------------------------------------------------------
-# Bootleggers OTA update package
+# Blaze OTA update package
 
 ifneq ($(BUILD_WITH_COLORS),0)
-    include $(TOP_DIR)vendor/bootleggers/build/core/colors.mk
+    include $(TOP_DIR)vendor/blaze/build/core/colors.mk
 endif
 
-BOOTLEGGERS_TARGET_PACKAGE := $(PRODUCT_OUT)/$(BOOTLEGGERS_VERSION).zip
+BLAZE_TARGET_PACKAGE := $(PRODUCT_OUT)/$(BLAZE_VERSION).zip
 
-.PHONY: bacon bootleg bootleggers
+.PHONY: bacon blaze blaze
 bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
-	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(BOOTLEGGERS_TARGET_PACKAGE)
-	$(hide) $(MD5SUM) $(BOOTLEGGERS_TARGET_PACKAGE) > $(BOOTLEGGERS_TARGET_PACKAGE).md5sum
+	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(BLAZE_TARGET_PACKAGE)
+	$(hide) $(MD5SUM) $(BLAZE_TARGET_PACKAGE) > $(BLAZE_TARGET_PACKAGE).md5sum
 	@echo -e ${CL_BLU}""${CL_BLU}
-	@echo -e ${CL_BLU}" ######  ####### #        #####  "${CL_BLU}
-	@echo -e ${CL_BLU}" #     #    #    #       #     # "${CL_BLU}
-	@echo -e ${CL_BLU}" #     #    #    #       #       "${CL_BLU}
-	@echo -e ${CL_BLU}" ######     #    #       #  #### "${CL_BLU}
-	@echo -e ${CL_BLU}" #     #    #    #       #     # "${CL_BLU}
-	@echo -e ${CL_BLU}" #     #    #    #       #     # "${CL_BLU}
-	@echo -e ${CL_BLU}" ######     #    #######  #####  "${CL_BLU}
+	@echo -e ${CL_BLU}" ######     #          #######  "${CL_BLU}
+	@echo -e ${CL_BLU}" #     #    #               #   "${CL_BLU}
+	@echo -e ${CL_BLU}" #     #    #              #    "${CL_BLU}
+	@echo -e ${CL_BLU}" ######     #             #     "${CL_BLU}
+	@echo -e ${CL_BLU}" #     #    #            #      "${CL_BLU}
+	@echo -e ${CL_BLU}" #     #    #           #       "${CL_BLU}
+	@echo -e ${CL_BLU}" ######     ########   #######  "${CL_BLU}
 	@echo -e ${CL_BLU}"                                 "${CL_BLU}
-	@echo -e ${CL_CYN}"          Bootleggers ROM         "${CL_CYN}
-	@echo -e ${CL_CYN}"          #KeepTheBootleg        "${CL_CYN}
-	@echo -e ${CL_CYN}"                "${CL_CYN}
+	@echo -e ${CL_CYN}"          Blaze-AOSP         "${CL_CYN}
+	@echo -e ${CL_CYN}"                 "${CL_CYN}
+	@echo -e ${CL_CYN}"         #Be Ignited!       "${CL_CYN}
 	@echo -e ${CL_CYN}"                "${CL_CYN}
 	@echo -e ${CL_CYN}"                "${CL_CYN}
 	@echo -e ${CL_CYN}"The build is done, be sure to get it on:"${CL_CYN}
-	@echo -e ${CL_CYN}"$(BOOTLEGGERS_TARGET_PACKAGE)"${CL_CYN}
-ifeq ($(BOOTLEGGERS_BUILD_TYPE),Shishufied)
-	@echo -e ${CL_CYN}"And your build size is:" $(shell ls -l --block-size=M $(BOOTLEGGERS_TARGET_PACKAGE)|cut -d" " -f5)"B ("$(shell stat -L -t -c %s $(BOOTLEGGERS_TARGET_PACKAGE))")"${CL_CYN}
+	@echo -e ${CL_CYN}"$(BLAZE_TARGET_PACKAGE)"${CL_CYN}
+ifeq ($(BLAZE_BUILD_TYPE),Shishufied)
+	@echo -e ${CL_CYN}"And your build size is:" $(shell ls -l --block-size=M $(BLAZE_TARGET_PACKAGE)|cut -d" " -f5)"B ("$(shell stat -L -t -c %s $(BLAZE_TARGET_PACKAGE))")"${CL_CYN}
 else
-	@echo -e ${CL_CYN}"Your build size is" $(shell ls -l --block-size=M $(BOOTLEGGERS_TARGET_PACKAGE)|cut -d" " -f5)"B"${CL_CYN}
+	@echo -e ${CL_CYN}"Your build size is" $(shell ls -l --block-size=M $(BLAZE_TARGET_PACKAGE)|cut -d" " -f5)"B"${CL_CYN}
 endif
 	@echo -e ${CL_CYN}"                "${CL_CYN}
-	@echo -e ${CL_CYN}"Also, enjoy your $(BOOTLEGGERS_BUILD_TYPE) build"${CL_CYN}  
+	@echo -e ${CL_CYN}"Also, enjoy your $(BLAZE_BUILD_TYPE) build"${CL_CYN}  
 
-bootleggers: bacon
-
-bootleg: bacon
+blaze: bacon

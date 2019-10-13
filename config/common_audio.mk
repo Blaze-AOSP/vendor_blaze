@@ -1,11 +1,11 @@
 #
-# BootleggersROM Audio Files
+# Blaze-AOSP Audio Files
 # based on CyanogenMod old one
 #
 
-ALARM_PATH := vendor/bootleggers/prebuilt/common/media/audio/alarms
-NOTIFICATION_PATH := vendor/bootleggers/prebuilt/common/media/audio/notifications
-RINGTONE_PATH := vendor/bootleggers/prebuilt/common/media/audio/ringtones
+ALARM_PATH := vendor/blaze/prebuilt/common/media/audio/alarms
+NOTIFICATION_PATH := vendor/blaze/prebuilt/common/media/audio/notifications
+RINGTONE_PATH := vendor/blaze/prebuilt/common/media/audio/ringtones
 
 # Alarms
 PRODUCT_COPY_FILES += \
