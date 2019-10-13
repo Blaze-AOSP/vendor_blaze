@@ -1,14 +1,14 @@
 bootstrap_go_package {
-    name: "soong-bootleggers",
-    pkgPath: "bootleggers/soong/android",
+    name: "soong-blaze",
+    pkgPath: "blaze/soong/android",
     srcs: [
         "android/variable.go",
     ],
 }
 
 bootstrap_go_package {
-    name: "soong-bootleggers-generator",
-    pkgPath: "bootleggers/soong/generator",
+    name: "soong-blaze-generator",
+    pkgPath: "blaze/soong/generator",
     deps: [
         "blueprint",
         "blueprint-pathtools",

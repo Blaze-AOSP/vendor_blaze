@@ -35,7 +35,7 @@ ifeq ($(TARGET_BOOTANIMATION_HALF_RES),)
 endif
 
 define build-bootanimation
-    ./vendor/bootleggers/bootanimation/generate-bootanimation.sh \
+    ./vendor/blaze/bootanimation/generate-bootanimation.sh \
     $(TARGET_SCREEN_WIDTH) \
     $(TARGET_SCREEN_HEIGHT) \
     $(TARGET_BOOTANIMATION_HALF_RES) \

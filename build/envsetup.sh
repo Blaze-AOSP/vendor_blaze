@@ -1,11 +1,11 @@
 # gzosp functions that extend build/envsetup.sh
 
-function bootleg_device_combos()
+function blaze_device_combos()
 {
     local T list_file variant device
 
     T="$(gettop)"
-    list_file="${T}/vendor/bootleggers/bootleggers.devices"
+    list_file="${T}/vendor/blaze/blaze.devices"
     variant="userdebug"
 
     if [[ $1 ]]
@@ -27,45 +27,45 @@ function bootleg_device_combos()
     if [[ ! -f "${list_file}" ]]
     then
         echo "unable to find device list: ${list_file}"
-        list_file="${T}/vendor/bootleggers/bootleggers.devices"
+        list_file="${T}/vendor/blaze/blaze.devices"
         echo "defaulting device list file to: ${list_file}"
     fi
 
     while IFS= read -r device
     do
-        add_lunch_combo "bootleg_${device}-${variant}"
+        add_lunch_combo "blaze_${device}-${variant}"
     done < "${list_file}"
 }
 
-function bootleg_rename_function()
+function blaze_rename_function()
 {
-    eval "original_bootleg_$(declare -f ${1})"
+    eval "original_blaze_$(declare -f ${1})"
 }
 
-function _bootleg_build_hmm() #hidden
+function _blaze_build_hmm() #hidden
 {
     printf "%-8s %s" "${1}:" "${2}"
 }
 
-function bootleg_append_hmm()
+function blaze_append_hmm()
 {
-    HMM_DESCRIPTIVE=("${HMM_DESCRIPTIVE[@]}" "$(_bootleg_build_hmm "$1" "$2")")
+    HMM_DESCRIPTIVE=("${HMM_DESCRIPTIVE[@]}" "$(_blaze_build_hmm "$1" "$2")")
 }
 
-function bootleg_add_hmm_entry()
+function blaze_add_hmm_entry()
 {
     for c in ${!HMM_DESCRIPTIVE[*]}
     do
         if [[ "${1}" == $(echo "${HMM_DESCRIPTIVE[$c]}" | cut -f1 -d":") ]]
         then
-            HMM_DESCRIPTIVE[${c}]="$(_bootleg_build_hmm "$1" "$2")"
+            HMM_DESCRIPTIVE[${c}]="$(_blaze_build_hmm "$1" "$2")"
             return
         fi
     done
-    bootleg_append_hmm "$1" "$2"
+    blaze_append_hmm "$1" "$2"
 }
 
-function bootlegremote()
+function blazeremote()
 {
     local proj pfx project
 
@@ -84,7 +84,7 @@ function bootlegremote()
 
     project="${proj//\//_}"
 
-    git remote add bootdevices "git@github.com:BootleggersROM-Devices/$pfx$project"
+    git remote add bootdevices "git@github.com:Blaze-Devices/$pfx$project"
     echo "Remote 'bootdevices' created"
 }
 
@@ -146,16 +146,16 @@ function cafremote()
 }
 
 
-bootleg_rename_function hmm
+blaze_rename_function hmm
 function hmm() #hidden
 {
     local i T
     T="$(gettop)"
-    original_bootleg_hmm
+    original_blaze_hmm
     echo
 
-    echo "vendor/bootleggers extended functions. The complete list is:"
-    for i in $(grep -P '^function .*$' "$T/vendor/bootleggers/build/envsetup.sh" | grep -v "#hidden" | sed 's/function \([a-z_]*\).*/\1/' | sort | uniq); do
+    echo "vendor/blaze extended functions. The complete list is:"
+    for i in $(grep -P '^function .*$' "$T/vendor/blaze/build/envsetup.sh" | grep -v "#hidden" | sed 's/function \([a-z_]*\).*/\1/' | sort | uniq); do
         echo "$i"
     done |column
 }
@@ -164,7 +164,7 @@ function fixup_common_out_dir() {
     common_out_dir=$(get_build_var OUT_DIR)/target/common
     target_device=$(get_build_var TARGET_DEVICE)
     common_target_out=common-${target_device}
-    if [ ! -z $BOOTLEGGERS_FIXUP_COMMON_OUT ]; then
+    if [ ! -z $BLAZE_FIXUP_COMMON_OUT ]; then
         if [ -d ${common_out_dir} ] && [ ! -L ${common_out_dir} ]; then
             mv ${common_out_dir} ${common_out_dir}-${target_device}
             ln -s ${common_target_out} ${common_out_dir}
@@ -179,6 +179,6 @@ function fixup_common_out_dir() {
     fi
 }
 
-bootleg_append_hmm "bootlegremote" "Add a git remote for matching Bootleggers repository"
-bootleg_append_hmm "aospremote" "Add git remote for matching AOSP repository"
-bootleg_append_hmm "cafremote" "Add git remote for matching CodeAurora repository."
+blaze_append_hmm "blazeremote" "Add a git remote for matching Blaze repository"
+blaze_append_hmm "aospremote" "Add git remote for matching AOSP repository"
+blaze_append_hmm "cafremote" "Add git remote for matching CodeAurora repository."

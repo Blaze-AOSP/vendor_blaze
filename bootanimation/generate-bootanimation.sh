@@ -22,7 +22,7 @@ mkdir -p "$OUT/bootanimation"
 #
 # By now the current designs to declare are:
 #   0: Classic bootanimation
-#   1: Classic bootanimation but without the "Provided by team bootleggers" and go straight to the loop.
+#   1: Classic bootanimation but without the "Provided by team blaze" and go straight to the loop.
 #   2: Attempt of glitch made by us, bad attempt but it's clean anyways
 #   3: After effects reveal template: It's a template, more than that what do you expect?
 #   4: After effects reveal template (alternative): Another template but it got a circle except of lines and more glitching at the end.
@@ -116,11 +116,11 @@ for part_cnt in 0 1 2; do
     mkdir -p $OUT/bootanimation/part$part_cnt
 done
 
-tar xfp "vendor/bootleggers/bootanimation/bootanimation$RANDOM_BOOT.tar" --to-command="convert - -strip -gaussian-blur 0.05 -quality 55 -resize '$RESOLUTION'^ -gravity center -crop '$RESOLUTION+0+0' +repage \"$OUT/bootanimation/\$TAR_FILENAME\""
+tar xfp "vendor/blaze/bootanimation/bootanimation$RANDOM_BOOT.tar" --to-command="convert - -strip -gaussian-blur 0.05 -quality 55 -resize '$RESOLUTION'^ -gravity center -crop '$RESOLUTION+0+0' +repage \"$OUT/bootanimation/\$TAR_FILENAME\""
 
 # Create desc.txt
 echo "$IMAGESIZEW $IMAGESIZEH $BOOTFPS" > "$OUT/bootanimation/desc.txt"
-cat "vendor/bootleggers/bootanimation/desc.txt" >> "$OUT/bootanimation/desc.txt"
+cat "vendor/blaze/bootanimation/desc.txt" >> "$OUT/bootanimation/desc.txt"
 
 # Create bootanimation.zip
 cd "$OUT/bootanimation"
