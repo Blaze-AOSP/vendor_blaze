@@ -186,6 +186,6 @@ include vendor/blaze/config/caf_fw.mk
 endif
 endif
 
-include vendor/blaze/config/blz_main.mk
+include vendor/blaze/config/main.mk
 
 $(call prepend-product-if-exists, vendor/extra/product.mk)
