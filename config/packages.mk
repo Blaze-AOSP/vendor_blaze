@@ -1,14 +1,10 @@
 # Our Blaze apps
 PRODUCT_PACKAGES += \
-    CameraRoll \
-    MiXplorerPrebuilt \
-    WallpaperPicker2 \
-    MarkupGoogle \
-    GugelClock \
+    QPGallery \
+    ViaBrowser \
     Jelly \
     LatinIME \
-    Phonograph \
-    Recorder \
+    RetroMusicPlayer \
     ThemePicker
 
 ifeq ($(BLAZE_BUILD_TYPE),Ignited)
