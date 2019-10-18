@@ -2,7 +2,6 @@
 PRODUCT_PACKAGES += \
     QPGallery \
     ViaBrowser \
-    Jelly \
     LatinIME \
     RetroMusicPlayer \
     ThemePicker
