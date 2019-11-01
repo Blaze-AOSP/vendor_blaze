@@ -4,6 +4,10 @@ PRODUCT_PACKAGES += \
     ViaBrowser \
     LatinIME \
     RetroMusicPlayer \
+
+# Themes
+PRODUCT_PACKAGES += \
+    BlazeThemesStub \
     ThemePicker
 
 ifeq ($(BLAZE_BUILD_TYPE),OFFICIAL)
