@@ -6,6 +6,7 @@
 
     <privapp-permissions package="com.android.launcher3">
         <permission name="android.permission.FORCE_STOP_PACKAGES"/>
+        <permission name="android.permission.MANAGE_USERS" />
     </privapp-permissions>
 
     <privapp-permissions package="com.android.systemui">
@@ -20,7 +21,13 @@
         <permission name="android.permission.ACCESS_FONT_MANAGER"/>
     </privapp-permissions>
 
-    <privapp-permissions package="com.blaze.igniteota">
+    <privapp-permissions package="com.android.wallpaper">
+        <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+        <permission name="android.permission.SET_WALLPAPER_COMPONENT"/>
+        <permission name="android.permission.CHANGE_OVERLAY_PACKAGES"/>
+    </privapp-permissions>
+
+    <privapp-permissions package="com.blaze.blazeota">
         <permission name="android.permission.ACCESS_CACHE_FILESYSTEM"/>
         <permission name="android.permission.REBOOT"/>
         <permission name="android.permission.RECOVERY"/>
