@@ -6,9 +6,9 @@ PRODUCT_PACKAGES += \
     RetroMusicPlayer \
     ThemePicker
 
-ifeq ($(BLAZE_BUILD_TYPE),Ignited)
+ifeq ($(BLAZE_BUILD_TYPE),OFFICIAL)
     PRODUCT_PACKAGES += \
-        IgniteOTA
+        BlazeOTA
 endif
 
 # Launcher Selection just in case
