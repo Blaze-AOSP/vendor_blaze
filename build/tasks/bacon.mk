@@ -16,38 +16,17 @@
 # -----------------------------------------------------------------
 # Blaze OTA update package
 
-ifneq ($(BUILD_WITH_COLORS),0)
-    include $(TOP_DIR)vendor/blaze/build/core/colors.mk
-endif
-
 BLAZE_TARGET_PACKAGE := $(PRODUCT_OUT)/$(BLAZE_VERSION).zip
 
-.PHONY: bacon blaze blaze
+.PHONY: bacon blaze
 bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(BLAZE_TARGET_PACKAGE)
-	$(hide) $(MD5SUM) $(BLAZE_TARGET_PACKAGE) > $(BLAZE_TARGET_PACKAGE).md5sum
-	@echo -e ${CL_BLU}""${CL_BLU}
-	@echo -e ${CL_BLU}" ######     #          #######  "${CL_BLU}
-	@echo -e ${CL_BLU}" #     #    #               #   "${CL_BLU}
-	@echo -e ${CL_BLU}" #     #    #              #    "${CL_BLU}
-	@echo -e ${CL_BLU}" ######     #             #     "${CL_BLU}
-	@echo -e ${CL_BLU}" #     #    #            #      "${CL_BLU}
-	@echo -e ${CL_BLU}" #     #    #           #       "${CL_BLU}
-	@echo -e ${CL_BLU}" ######     ########   #######  "${CL_BLU}
-	@echo -e ${CL_BLU}"                                 "${CL_BLU}
-	@echo -e ${CL_CYN}"          Blaze-AOSP         "${CL_CYN}
-	@echo -e ${CL_CYN}"                 "${CL_CYN}
-	@echo -e ${CL_CYN}"         #Be Ignited!       "${CL_CYN}
-	@echo -e ${CL_CYN}"                "${CL_CYN}
-	@echo -e ${CL_CYN}"                "${CL_CYN}
-	@echo -e ${CL_CYN}"The build is done, be sure to get it on:"${CL_CYN}
-	@echo -e ${CL_CYN}"$(BLAZE_TARGET_PACKAGE)"${CL_CYN}
-ifeq ($(BLAZE_BUILD_TYPE),Shishufied)
-	@echo -e ${CL_CYN}"And your build size is:" $(shell ls -l --block-size=M $(BLAZE_TARGET_PACKAGE)|cut -d" " -f5)"B ("$(shell stat -L -t -c %s $(BLAZE_TARGET_PACKAGE))")"${CL_CYN}
-else
-	@echo -e ${CL_CYN}"Your build size is" $(shell ls -l --block-size=M $(BLAZE_TARGET_PACKAGE)|cut -d" " -f5)"B"${CL_CYN}
-endif
-	@echo -e ${CL_CYN}"                "${CL_CYN}
-	@echo -e ${CL_CYN}"Also, enjoy your $(BLAZE_BUILD_TYPE) build"${CL_CYN}  
+	$(hide) $(MD5SUM) $(BLAZE_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(BLAZE_TARGET_PACKAGE).md5sum
+	@echo "done"
+	@echo "===============================-Package complete-============================================================="
+	@echo "Zip: $(BLAZE_TARGET_PACKAGE)"
+	@echo "MD5: `cat $(BLAZE_TARGET_PACKAGE).md5sum | awk '{print $$1}' `"
+	@echo "Size: `du -sh $(BLAZE_TARGET_PACKAGE) | awk '{print $$1}' `"
+@echo "=============================================================================================================="
 
 blaze: bacon
