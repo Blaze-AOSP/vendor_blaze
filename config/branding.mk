@@ -2,8 +2,8 @@ PRODUCT_BRAND ?= Blaze
 
 # Versioning System
 # Blaze version over here.
-BLAZE_REVISION = 1.0
-BLAZE_SUBREVISION := IsTen
+BLAZE_REVISION = 2.0
+BLAZE_SUBREVISION := BonFire
 BLAZE_BUILD_DATE := $(shell date -u +"%Y%m%d-%H%M%S")
 
 ifndef BLAZE_BUILD_TYPE
