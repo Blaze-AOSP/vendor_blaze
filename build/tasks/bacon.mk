@@ -17,12 +17,13 @@
 # -----------------------------------------------------------------
 # Blaze OTA update package
 
+MD5 := prebuilts/build-tools/path/$(HOST_OS)-x86/md5sum
 BLAZE_TARGET_PACKAGE := $(PRODUCT_OUT)/$(BLAZE_VERSION).zip
 
 .PHONY: bacon blaze
 bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(BLAZE_TARGET_PACKAGE)
-	$(hide) $(MD5SUM) $(BLAZE_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(BLAZE_TARGET_PACKAGE).md5sum
+	$(hide) $(MD5) $(BLAZE_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(BLAZE_TARGET_PACKAGE).md5sum
 	@echo "done"
 	@echo "===============================-Package complete-============================================================="
 	@echo "Zip: $(BLAZE_TARGET_PACKAGE)"
