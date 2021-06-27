@@ -181,6 +181,12 @@ TARGET_INCLUDE_STOCK_ARCORE ?= true
 TARGET_INCLUDE_LIVE_WALLPAPERS ?= true
 TARGET_SUPPORTS_QUICK_TAP ?= false
 
+# Our Blaze apps
+PRODUCT_PACKAGES += \
+    MiXplorerPrebuilt \
+    ViaBrowser \
+    GoogleCameraGo
+
 # Face Unlock
 #TARGET_FACE_UNLOCK_SUPPORTED ?= true
 #ifeq ($(TARGET_FACE_UNLOCK_SUPPORTED),true)
