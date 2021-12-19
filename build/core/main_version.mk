@@ -1,13 +1,13 @@
 # Build fingerprint
 ifeq ($(BUILD_FINGERPRINT),)
 BUILD_NUMBER_CUSTOM := $(shell date -u +%H%M)
-CUSTOM_DEVICE ?= $(TARGET_DEVICE)
-ifneq ($(filter OFFICIAL,$(CUSTOM_BUILD_TYPE)),)
+BLAZE_DEVICE ?= $(TARGET_DEVICE)
+ifneq ($(filter OFFICIAL,$(BLAZE_BUILD_TYPE)),)
 BUILD_SIGNATURE_KEYS := release-keys
 else
 BUILD_SIGNATURE_KEYS := test-keys
 endif
-BUILD_FINGERPRINT := $(PRODUCT_BRAND)/$(CUSTOM_DEVICE)/$(CUSTOM_DEVICE):$(PLATFORM_VERSION)/$(BUILD_ID)/$(BUILD_NUMBER_CUSTOM):$(TARGET_BUILD_VARIANT)/$(BUILD_SIGNATURE_KEYS)
+BUILD_FINGERPRINT := $(PRODUCT_BRAND)/$(BLAZE_DEVICE)/$(BLAZE_DEVICE):$(PLATFORM_VERSION)/$(BUILD_ID)/$(BUILD_NUMBER_CUSTOM):$(TARGET_BUILD_VARIANT)/$(BUILD_SIGNATURE_KEYS)
 endif
 ADDITIONAL_SYSTEM_PROPERTIES  += \
     ro.build.fingerprint=$(BUILD_FINGERPRINT)
@@ -20,8 +20,8 @@ endif
 
 # Versioning props
 ADDITIONAL_SYSTEM_PROPERTIES  += \
-    org.pixelexperience.version=$(CUSTOM_VERSION_PROP) \
-    org.pixelexperience.version.display=$(CUSTOM_VERSION) \
-    org.pixelexperience.build_date=$(CUSTOM_BUILD_DATE) \
-    org.pixelexperience.build_date_utc=$(CUSTOM_BUILD_DATE_UTC) \
-    org.pixelexperience.build_type=$(CUSTOM_BUILD_TYPE)
+    com.blaze.version=$(BLAZE_VERSION_PROP) \
+    com.blaze.version.display=$(BLAZE_VERSION) \
+    com.blaze.build_date=$(BLAZE_BUILD_DATE) \
+    com.blaze.build_date_utc=$(BLAZE_BUILD_DATE_UTC) \
+    com.blaze.build_type=$(BLAZE_BUILD_TYPE)
