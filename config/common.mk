@@ -202,7 +202,7 @@ $(call inherit-product, vendor/blaze/config/bootanimation.mk)
 $(call inherit-product, vendor/blaze/config/fonts.mk)
 
 # GApps
-$(call inherit-product, vendor/gapps/common/common-vendor.mk)
+$(call inherit-product, vendor/google/common/common-vendor.mk)
 
 # OTA
 $(call inherit-product, vendor/blaze/config/ota.mk)
